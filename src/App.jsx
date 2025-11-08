@@ -6,8 +6,9 @@ import './App.css'
 import { useState } from "react"
 export const App = () => {
   const [isDarkMode,setDarkMode]=useState(false)
+
   return (
-    <div className="app">
+    <div className="app" data-theme={isDarkMode ? "dark" : ""}>
      <div className='app_calculator'>
         <div className='app_calculator_navbar'>
           <div className='app_calculator_toggle'>
