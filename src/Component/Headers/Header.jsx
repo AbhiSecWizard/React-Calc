@@ -1,24 +1,26 @@
 import "./Header.css"
 import "../../App.css"
-export const Header=()=>{
+import { useEffect, useRef } from "react"
+export const Header=(props)=>{
+  const resultRef = useRef();
+  useEffect(() => {
+    resultRef.current.scrollIntoView({ behavior: "smooth", block: "end" });
+  },[])
   return (
     <div className="header custom-scroll">
         <div className="header_history">
-           <p>10+50+89</p>
-                <p>10+50+89</p>
-                <p>10+50+89</p>
-                <p>10+50+89</p>
-                <p>10+50+89</p>
-                <p>10+50+89</p>
-                <p>10+50+89</p>
-                <p>10+50+89</p>
+           {
+            props.history && props.history.map((item,index)=>(
+              <p key={index}>{item}</p>
+            ))
+           }
                
         </div>
           <br />
          <div className="header_expression custom-scroll">
-           <p>10+50+89 10+50+89 10+50+89 10+50+89 10+50+89 10+50+89 10+50+89 10+50+89 10+50+89</p>
+           <p>{props.expression}</p>
           </div>
-  <p className="header_result ">149</p>
+  <p className="header_result " ref={resultRef}>{props.result}</p>
 </div>
   )
 }
